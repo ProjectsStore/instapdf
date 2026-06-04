@@ -1,0 +1,110 @@
+/* ---- URL Input Component ---- */
+
+.url-input-wrapper {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  animation: fade-in 0.6s ease-out;
+}
+
+.url-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.url-input-container:focus-within {
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-glow);
+}
+
+.url-input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-instagram);
+  flex-shrink: 0;
+}
+
+.url-input-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+}
+
+.url-input-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  padding: var(--space-sm) var(--space-xs);
+  outline: none;
+  min-width: 0;
+}
+
+.url-input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.url-input-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-accent);
+  color: white;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-base), opacity var(--transition-base);
+}
+
+.url-input-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.35);
+}
+
+.url-input-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.url-input-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.url-input-error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-error-bg);
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  animation: scale-in 0.3s ease-out;
+}
+
+.url-input-error svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}

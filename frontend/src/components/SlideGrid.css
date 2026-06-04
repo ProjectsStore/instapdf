@@ -1,0 +1,106 @@
+/* ---- Slide Grid Component ---- */
+
+.slide-grid-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fade-in 0.5s ease-out 0.2s both;
+}
+
+.slide-grid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  padding: 0 var(--space-xs);
+}
+
+.slide-grid-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.slide-grid-count {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--bg-glass-border);
+}
+
+.slide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Responsive grid */
+@media (max-width: 640px) {
+  .slide-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .slide-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Drag overlay */
+.slide-grid-overlay {
+  opacity: 0.9;
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(102, 126, 234, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Post info bar */
+.slide-grid-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-lg);
+}
+
+.slide-grid-info-username {
+  font-weight: 600;
+  background: var(--gradient-instagram);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.slide-grid-info-caption {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 500px;
+}
+
+/* Empty state */
+.slide-grid-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-3xl);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.slide-grid-empty svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.4;
+}

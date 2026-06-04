@@ -1,0 +1,155 @@
+/* ============================================
+   InstaPDF — App Layout
+   ============================================ */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2xl) var(--space-lg);
+  gap: var(--space-2xl);
+}
+
+/* ---- Hero Header ---- */
+.app-header {
+  text-align: center;
+  animation: fade-in 0.6s ease-out;
+}
+
+.app-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.app-logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-instagram);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-logo-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+.app-title {
+  font-size: var(--font-size-hero);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  background: linear-gradient(
+    135deg,
+    #f0f0f5 0%,
+    #a0a0c0 50%,
+    #f0f0f5 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.app-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: var(--space-sm);
+}
+
+.app-subtitle span {
+  background: var(--gradient-instagram);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* ---- Main content area ---- */
+.app-content {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+}
+
+/* ---- Footer ---- */
+.app-footer {
+  margin-top: auto;
+  padding-top: var(--space-2xl);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.app-footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.app-footer a:hover {
+  color: var(--text-primary);
+}
+
+/* ---- Loading skeleton ---- */
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-3xl);
+  animation: fade-in 0.4s ease-out;
+}
+
+.app-loading-text {
+  color: var(--text-secondary);
+  font-size: var(--font-size-md);
+}
+
+.app-loading .spinner {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+/* ---- New fetch button ---- */
+.app-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.app-reset-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: rgba(102, 126, 234, 0.3);
+}

@@ -1,0 +1,100 @@
+/* ---- Download Button Component ---- */
+
+.download-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  animation: fade-in 0.5s ease-out 0.4s both;
+}
+
+.download-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border: none;
+  border-radius: var(--radius-xl);
+  background: var(--gradient-instagram);
+  color: white;
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.download-btn:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.download-btn:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(220, 39, 67, 0.3), 0 4px 15px rgba(240, 148, 51, 0.2);
+}
+
+.download-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.download-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+.download-btn svg {
+  width: 22px;
+  height: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.download-btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Shimmer animation while loading */
+.download-btn.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.download-hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
