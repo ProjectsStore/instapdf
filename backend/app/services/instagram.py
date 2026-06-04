@@ -1,6 +1,7 @@
 """Instagram post fetching service using instaloader."""
 
 import re
+import urllib.parse
 import uuid
 
 import instaloader
@@ -24,6 +25,12 @@ def _extract_shortcode(url: str) -> str:
             "https://www.instagram.com/p/SHORTCODE/"
         )
     return match.group(1)
+
+
+def _make_proxy_url(original_url: str) -> str:
+    """Generate a relative URL pointing to our local image proxy."""
+    encoded = urllib.parse.quote(original_url, safe="")
+    return f"/api/posts/proxy-image?url={encoded}"
 
 
 def fetch_post_slides(url: str) -> FetchResponse:
@@ -61,7 +68,7 @@ def fetch_post_slides(url: str) -> FetchResponse:
             slides.append(
                 Slide(
                     id=str(uuid.uuid4()),
-                    url=node.display_url,
+                    url=_make_proxy_url(node.display_url),
                     width=node.dimensions[0] if hasattr(node, "dimensions") else 1080,
                     height=node.dimensions[1] if hasattr(node, "dimensions") else 1080,
                     is_video=node.is_video,
@@ -73,7 +80,7 @@ def fetch_post_slides(url: str) -> FetchResponse:
         slides.append(
             Slide(
                 id=str(uuid.uuid4()),
-                url=post.url,
+                url=_make_proxy_url(post.url),
                 width=post.dimensions[0] if hasattr(post, "dimensions") else 1080,
                 height=post.dimensions[1] if hasattr(post, "dimensions") else 1080,
                 is_video=post.is_video,
@@ -87,3 +94,4 @@ def fetch_post_slides(url: str) -> FetchResponse:
         caption=post.caption,
         username=post.owner_username,
     )
+

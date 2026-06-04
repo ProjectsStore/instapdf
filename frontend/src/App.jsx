@@ -104,6 +104,9 @@ export default function App() {
       {/* Footer */}
       <footer className="app-footer">
         <p>InstaPDF — Public posts only · No login required</p>
+        <p style={{ marginTop: '0.5rem' }}>
+          &copy; {new Date().getFullYear()} Satyam Seth. All rights reserved.
+        </p>
       </footer>
     </div>
   );

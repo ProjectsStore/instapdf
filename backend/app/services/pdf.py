@@ -1,11 +1,13 @@
 """PDF generation service using Pillow."""
 
 import io
+import urllib.parse
 
 import httpx
 from PIL import Image
 
 from app.schemas.post import PdfSlide
+
 
 
 # A4 dimensions in pixels at 150 DPI
@@ -68,7 +70,15 @@ async def generate_pdf(slides: list[PdfSlide]) -> bytes:
         },
     ) as client:
         for slide in sorted_slides:
-            response = await client.get(slide.url)
+            # If the URL is proxied, resolve it back to the original direct CDN URL
+            target_url = slide.url
+            if "/api/posts/proxy-image" in target_url:
+                parsed = urllib.parse.urlparse(target_url)
+                params = urllib.parse.parse_qs(parsed.query)
+                if "url" in params:
+                    target_url = params["url"][0]
+            
+            response = await client.get(target_url)
             response.raise_for_status()
             
             img = Image.open(io.BytesIO(response.content))
