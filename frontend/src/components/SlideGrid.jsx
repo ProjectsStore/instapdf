@@ -106,7 +106,7 @@ export default function SlideGrid({ slides, postInfo, onDelete, onReorder }) {
           {activeSlide ? (
             <div className="slide-grid-overlay">
               <img
-                src={activeSlide.url}
+                src={`https://instapdf-henna.vercel.app${activeSlide.url}`}
                 alt="Dragging"
                 style={{
                   width: '200px',
