@@ -32,7 +32,7 @@ export default function SlideCard({ slide, index, onDelete }) {
       <div className="slide-card-image-wrapper">
         <img
           className="slide-card-image"
-          src={slide.url}
+          src={`https://instapdf-henna.vercel.app${slide.url}`}
           alt={`Slide ${index + 1}`}
           loading="lazy"
           draggable="false"
